@@ -15,7 +15,7 @@
 # Chapter 02: 자바스크립트 리마인드
 변수, 호이스팅, 클로저
 
-1. 변수 호이스팅
+변수 호이스팅
 ```
 console.log(puppy); // 실행결과 : undefined
 var puppy = "cute";
