@@ -23,4 +23,33 @@ console.log(puppy); // 실행결과 : cute
 ```
 puppy라는 변수를 아직 선언하지 않은 상태에서 호출하였는데 오류가 발생하지 않고 undefined라는 값을 반환한다. 이런 현상을 바로 '변수 호이스팅'이라고 한다. 
 
+let을 사용한 변수 호이스팅 문제 해결
+```
+let dog;
+dog = "happy";
+console.log(dog); // 실행결과 : happy
+let dog = "happy"; // Identifier 'dog' has already been declared
+```
 
+const를 사용한 변수 호이스팅 문제 해결
+```
+const puppy = "cute";
+const puppy = "so cute"; // 'puppy' has already been declared
+```
+
+클로저의 개념
+```
+function outer(){
+  var a = 'A';
+  var b = 'B';
+  function inner(){
+    var a = 'AA';
+    console.log(b);
+  }
+  return inner;
+}
+
+var outerFunc = outer();
+outerFunc(); // B
+```
+클로저(closure)는 내부 함수가 외부 함수의 스코프(범위)에 접근할 수 있는 것을 말한다.
