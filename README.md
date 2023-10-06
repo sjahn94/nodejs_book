@@ -88,3 +88,38 @@ let [first, second] = animal;
 console.log(first); // dog
 console.log(second); // cat
 ```
+
+<b>함수</b><br>
+```
+function add(a,b){
+  return a+b;
+}
+console.log(add(1,4)); // 5
+```
+
+<b>화살표 함수</b><br>
+```
+const add = (a,b) => {
+  return a+b;
+}
+console.log(add(1,4)); // 5
+```
+
+화살표 함수에는 함수명, arguments, this, 이 세 가지가 없다는 점이 특징이다. 함수명이 없다는 것은 익명 함수로 동작한다는 뜻이고 arguments, this가 없다면 다음과 같은 일이 발생한다.
+```
+const func = function(){
+  console.log(arguments);
+}
+function(1,2,3,4); // [Arguments] {'0':1, '1':2, '2':3, '3':4}
+```
+
+```
+const func = (...args) => {
+  console.log(args);
+}
+
+func(1,2,3,4); // [1,2,3,4]
+```
+
+화살표 함수에는 arguments가 자동으로 생성되지 않기 때문에 arguments가 필요하다면 함수의 파라미터 부분에 ...args를 넣어 args라는 배열 안에 파라미터를 담을 수 있다.
+...은 전개 연산자라고 하는데, "값이 몇 개가 될지 모르나 뒤에 오는 변수명에 값을 배열로 넣어라"라고 하는 의미이다.
