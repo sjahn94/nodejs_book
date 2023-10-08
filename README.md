@@ -141,3 +141,28 @@ setTimeout(() => {
 // todo : First work!
 
 setTimeout() 함수는 콜백 함수와 지체할 시간을 인자로 받아 인자로 받은 시간만큼 기다렸다가 콜백 함수를 실행하는 함수이다. 자바스크립트는 이벤트 중심 언어이기 때문에 어떤 이벤트가 발생하고, 그에 대한 결과가 올 때까지 기다리지 않고 다음 이벤트를 계속 실행 한다.
+
+<b>Promise</b><br>
+Promise는 코드의 중첩이 많아지는 콜백 지옥을 벗어날 수 있게 해주는 객체이다.
+
+```
+function workP(sec){
+  // Promise의 인스턴스를 반환하고
+  // then에서 반환한 것을 받는다.
+  return new Promise((resolve, reject) => {
+    // Promise 생성시 넘기는 callback = resolve, reject
+    // resolve 동작 완료시 호출, 오류 났을 경우 reject
+    setTimeout(() => {
+      resolve(new Date().toISOString());
+    }, sec * 1000);
+  }); 
+}
+
+workP(1).then((result) => {
+  console.log('첫 번째 작업', result);
+  return workP(1);
+}).then((result) => {
+  console.log('두 번째 작업', result);
+});
+```
+
