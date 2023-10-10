@@ -166,3 +166,15 @@ workP(1).then((result) => {
 });
 ```
 
+# Chapter 03: 5줄로 만드는 서버
+<b>package.json</b><br>
+package.json 파일은 프로젝트에 들어 있는 여러 패키지 정보를 관리해주는 파일 이다.
+
+<b>npm init</b><br>
+npm init 명령어는 Node.js를 시작하기 위한 초기화(initial) 작업이자 package.json을 만드는 명령어이다.
+
+package name -> 패키지명
+entry point -> 실행 파일의 진입점 역할을 하는 파일을 지정, 주로 index.js, app.js, server.js등의 이름을 사용하며 기본값은 index.js이다.
+test command -> 코드를 테스트할 때 입력할 명령어
+keyword -> npm에서 패키지를 찾게 해주는 옵션
+license -> 원하는 라이선스를 지정해주는 옵션
