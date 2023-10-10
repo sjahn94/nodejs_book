@@ -173,8 +173,13 @@ package.json 파일은 프로젝트에 들어 있는 여러 패키지 정보를 
 <b>npm init</b><br>
 npm init 명령어는 Node.js를 시작하기 위한 초기화(initial) 작업이자 package.json을 만드는 명령어이다.
 
-package name -> 패키지명
-entry point -> 실행 파일의 진입점 역할을 하는 파일을 지정, 주로 index.js, app.js, server.js등의 이름을 사용하며 기본값은 index.js이다.
-test command -> 코드를 테스트할 때 입력할 명령어
-keyword -> npm에서 패키지를 찾게 해주는 옵션
-license -> 원하는 라이선스를 지정해주는 옵션
+package name -> 패키지명<br>
+entry point -> 실행 파일의 진입점 역할을 하는 파일을 지정, 주로 index.js, app.js, server.js등의 이름을 사용하며 기본값은 index.js이다.<br>
+test command -> 코드를 테스트할 때 입력할 명령어<br>
+keyword -> npm에서 패키지를 찾게 해주는 옵션<br>
+license -> 원하는 라이선스를 지정해주는 옵션<br>
+
+<b>모듈 시스템</b><br>
+모듈이란 기능 단위로 분리하고 기능을 이루는 코드를 모아서 캡슐화해 놓은 것을 '모듈'이라고 한다.
+Require() : 모듈을 불러온다
+Module.exports=프로퍼티 또는 exports.프로퍼티 = 모듈을 내보낸다.
