@@ -181,5 +181,21 @@ license -> 원하는 라이선스를 지정해주는 옵션<br>
 
 <b>모듈 시스템</b><br>
 모듈이란 기능 단위로 분리하고 기능을 이루는 코드를 모아서 캡슐화해 놓은 것을 '모듈'이라고 한다.<br>
-Require() : 모듈을 불러온다
+Require() : 모듈을 불러온다<br>
 Module.exports=프로퍼티 또는 exports.프로퍼티 = 모듈을 내보낸다.
+
+<table>
+  <th>구분</th>
+  <th>정의 방식</th>
+  <th>require()의 호출 결과</th>
+  <tr>
+    <td>exports</td>
+    <td>값 자체를 할당하는 것이 아닌, 외부로 보낼 요소를 exports 객체의 프로퍼티 또는 메서드로 추가합니다.</td>
+    <td>프로퍼티와 메서드가 담긴 exports 객체를 require()로 받게 된다.</td>
+  </tr>
+  <tr>
+    <td>module,exports</td>
+    <td>객체에 하나의 값(원시 타입, 함수, 객체)만 할 당할 수 있다.</td>
+    <td>module.exports 객체에 할당된 값 자체를 require()를 통해 받는다.</td>
+  </tr>
+</table>
