@@ -199,3 +199,11 @@ Module.exports=프로퍼티 또는 exports.프로퍼티 = 모듈을 내보낸다
     <td>module.exports 객체에 할당된 값 자체를 require()를 통해 받는다.</td>
   </tr>
 </table>
+
+<b>http 모듈</b><br>
+http.createServer() : 서버를 만드는 함수<br>
+res.writeHead() : 응답에 대한 정보(헤더)를 기록하는 함수<br>
+res.write() : 클라이언트에 보낼 데이터<br>
+res.end() : 응답을 종료하는 메서드<br>
+fs.readFile() : 파일의 내용을 읽는다<br>
+
