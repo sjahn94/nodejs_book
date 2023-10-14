@@ -331,3 +331,33 @@ app.get("/user/:id", function(req, res) {
   res.send("user id: " + req.params.id);
 });
 ```
+
+<b>cookie-parser</b><br>
+Node.js에서 writeHead 함수에 Set-Cookie 설정 값 을 설정하여 쿠키를 생성할 수 있다.
+```
+const http = require('http');
+
+http.createServer((req, res) => {
+    res.writeHead(200, {'Set-cookie': 'name=roadbook'});
+    console.log(req.headers.cookie);
+    res.end('Cookie ---> Header');
+}).listen(8080, () => {
+    console.log('8080포트에서 서버 연결 중 ..');
+});
+```
+클라이언트가 쿠키와 함께 요청을 보내면 rea.headers.cookie를 통해 쿠키 값에 접근 할 수 있다. req.headers.cookie에 저장된 값은 문자열인데<br>
+이를 자바스크립트에서 사용하기 위해서는 객처로 파싱하는 과정이 필요하다. Cookie-parser없이 파싱하려면 따로 파싱하는 함수를 만들어야한다.<br>
+```
+const http = require('http');
+
+const session = {};
+const sessKey = new Date();
+session[sessKey] = { name: 'roadbook' };
+
+http.createServer((req, res) => {
+    res.writeHead(200, { 'Set-cookie': `session=${sessKey}`});
+    res.end('Session-Cookie --> Header');
+}).listen(8080, () => {
+    console.log('8080포트에서 서버 연결 중..');
+});
+```
