@@ -207,3 +207,26 @@ res.write() : 클라이언트에 보낼 데이터<br>
 res.end() : 응답을 종료하는 메서드<br>
 fs.readFile() : 파일의 내용을 읽는다<br>
 
+<b>express 모둘</b><br>
+Node.js의 핵심 모듈인 http, Connect 컴포넌트를 기반으로 하는 웹 프레임워크
+```
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+app.listen(8080, () => {
+    console.log('8080포트에서 서 실행중');
+});
+```
+res.send() : 클라이언트에 보낼 데이터<br>
+```
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+```
+res.sendFile() : 클라이언트에 해당 파일의 내용을 보내주는 메소드<br>
+
+nodemon : 파일들을 감시하고 있다가 Node.js 소스 수정 시 자동으로 서버를 재시작 해주는 모듈
