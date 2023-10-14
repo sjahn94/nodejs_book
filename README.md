@@ -347,6 +347,8 @@ http.createServer((req, res) => {
 ```
 클라이언트가 쿠키와 함께 요청을 보내면 rea.headers.cookie를 통해 쿠키 값에 접근 할 수 있다. req.headers.cookie에 저장된 값은 문자열인데<br>
 이를 자바스크립트에서 사용하기 위해서는 객처로 파싱하는 과정이 필요하다. Cookie-parser없이 파싱하려면 따로 파싱하는 함수를 만들어야한다.<br>
+
+<b>세션 생성</b>
 ```
 const http = require('http');
 
