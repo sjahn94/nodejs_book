@@ -320,11 +320,11 @@ router도 일종의 미들웨어이며, 클라이언트로부터 요청(request)
   </tr>
 </table>
 
-app.use('/경로', 미들웨어);
-app.get('/경로', 미들웨어);
-app.post('/경로', 미들웨어);
-app.put('/경로', 미들웨어);
-app.delete('/경로', 미들웨어);
+app.use('/경로', 미들웨어);<br>
+app.get('/경로', 미들웨어);<br>
+app.post('/경로', 미들웨어);<br>
+app.put('/경로', 미들웨어);<br>
+app.delete('/경로', 미들웨어);<br>
 
 ```
 app.get("/user/:id", function(req, res) {
