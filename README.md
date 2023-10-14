@@ -230,3 +230,104 @@ app.get('/', (req, res) => {
 res.sendFile() : 클라이언트에 해당 파일의 내용을 보내주는 메소드<br>
 
 nodemon : 파일들을 감시하고 있다가 Node.js 소스 수정 시 자동으로 서버를 재시작 해주는 모듈
+
+<b>express와 미들웨어</b><br>
+미들웨어는 중간 작업을 해주는 역할을 한다. 즉, 요청과 응답 사이에 express 자체에 있는 기능 외에 추가적인 기능을 넣어줄 수 있다.<br>
+app.use() 메서드를 통해 사용하고 app.set()과의 차이점은 app.set()은 전역으로 사용된다.
+
+```
+const express = require('express');
+const app = express();
+
+app.get('/', function(req, res, next){
+    res.send('Hello World!');
+    next();
+});
+
+const myLogger = function(req, res, next){
+    console.log('LOGGED');
+    next();
+};
+
+app.use(myLogger);
+
+app.listen(8080);
+```
+localhost:8080/에 접속 하였을때 myLogger를 반드시 거치게 된다. next()는 다음 미들웨어로 넘어가는 역할을 한다.<br>
+
+<table>
+  <th>종류</th>
+  <th>내용</th>
+  <tr>
+    <td>next()</td>
+    <td>다음 미들웨어로 가는 역할을 한다.</td>
+  </tr>
+  <tr>
+    <td>next(error)</td>
+    <td>오류 처리 미들웨어로 가는 역할을 한다.</td>
+  </tr>
+</table>
+
+<b>express.static</b><br>
+static 파일(정적 파일) : 이미지, css, 스크립트 파일과 같이 그 내용이 고정되어 있어, 응답을 할 때 별도의 처리 없이 파일 내용 그대로를 보여주면 되는 파일
+```
+const express = require('express');
+
+const app = express();
+app.set('port', process.env.PORT || 8080);
+
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index2.html');
+});
+
+app.listen(app.get('port'), () => {
+    console.log(app.get('port'), '번 포트에서 서버 실행 중..');
+});
+```
+
+<b>router</b><br>
+router도 일종의 미들웨어이며, 클라이언트로부터 요청(request)이 왔을 때 서버에서 어떤 응답(response)을 보내주어야 할지 결정해준다.
+<table>
+  <th>종류</th>
+  <th>주소</th>
+  <th>응답</th>
+  <tr>
+    <td>GET</td>
+    <td>/</td>
+    <td>index.html 파일을 송신한다.</td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/join</td>
+    <td>join.html 파일을 송신한다.</td>
+  </tr>
+  <tr>
+    <td>POST</td>
+    <td>/user</td>
+    <td>사용자를 등록한다.</td>
+  </tr>
+  <tr>
+    <td>PUT</td>
+    <td>/user/user_id</td>
+    <td>user_id를 가진 사용자의 정보를 수정한다.</td>
+  </tr>
+  <tr>
+    <td>DELETE</td>
+    <td>/user/user_id</td>
+    <td>user_id를 가진 사용자의 정보를 삭제한다.</td>
+  </tr>
+</table>
+
+app.use('/경로', 미들웨어);
+app.get('/경로', 미들웨어);
+app.post('/경로', 미들웨어);
+app.put('/경로', 미들웨어);
+app.delete('/경로', 미들웨어);
+
+```
+app.get("/user/:id", function(req, res) {
+  res.send("user id: " + req.params.id);
+});
+```
